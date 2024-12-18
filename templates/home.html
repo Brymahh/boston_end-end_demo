@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston House Price Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arimo', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?real-estate,house') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .login {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .login h1 {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .login form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login input {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login input:focus {
+            outline: none;
+            border-color: #00bcd4;
+            box-shadow: 0px 0px 5px rgba(0, 188, 212, 0.8);
+        }
+
+        .login button {
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login button:hover {
+            background-color: #0097a7;
+        }
+
+        .login button:active {
+            background-color: #006064;
+        }
+
+        .login br {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Demo- Boston House Price Prediction</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="CRIM" placeholder="CRIM" required="required" />
+            <input type="text" name="ZN" placeholder="ZN" required="required" />
+            <input type="text" name="INDUS" placeholder="INDUS" required="required" />
+            <input type="text" name="CHAS" placeholder="CHAS" required="required" />
+            <input type="text" name="NOX" placeholder="NOX" required="required" />
+            <input type="text" name="RM" placeholder="RM" required="required" />
+            <input type="text" name="Age" placeholder="Age" required="required" />
+            <input type="text" name="DIS" placeholder="DIS" required="required" />
+            <input type="text" name="RAD" placeholder="RAD" required="required" />
+            <input type="text" name="TAX" placeholder="TAX" required="required" />
+            <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" />
+            <input type="text" name="B" placeholder="B" required="required" />
+            <input type="text" name="LSTAT" placeholder="LSTAT" required="required" />
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+        <div class="footer">Real Estate API Demo | House Predictions</div>
+    </div>
+
+    {{ prediction_text }}
+</body>
+
+</html>

@@ -24,6 +24,15 @@ def predict_api():
     return jsonify(pred[0])
 
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    data =[float(x) for x in request.form.values()]
+    scaled_data = scalar.transform(np.array(data).reshape(1,-1))
+    print(scaled_data)
+    output =int(lr_ml.predict(scaled_data)[0])
+    return render_template('home.html', prediction_text="The current Estimate of this house is {}".format(output))
 
-if __name__=="main_py":
+
+
+if __name__=="__main__":
     app.run(debug=True)
